@@ -1,0 +1,14 @@
+{
+ "options": [
+  [
+   "blake2:shared",
+   "False"
+  ]
+ ],
+ "root": {
+  "name": null,
+  "version": null,
+  "user": "mjvk",
+  "channel": "testing"
+ }
+}
