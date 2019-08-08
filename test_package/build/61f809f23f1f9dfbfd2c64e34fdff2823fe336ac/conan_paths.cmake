@@ -1,3 +1,0 @@
-set(CONAN_BLAKE2_ROOT "C:/Users/mjvk/.conan/data/blake2/20190808/mjvk/testing/package/b11fd4ca09432e3de12bfe5b75099b010771c90f")
-set(CMAKE_MODULE_PATH "C:/Users/mjvk/.conan/data/blake2/20190808/mjvk/testing/package/b11fd4ca09432e3de12bfe5b75099b010771c90f/" ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_LIST_DIR})
-set(CMAKE_PREFIX_PATH "C:/Users/mjvk/.conan/data/blake2/20190808/mjvk/testing/package/b11fd4ca09432e3de12bfe5b75099b010771c90f/" ${CMAKE_PREFIX_PATH} ${CMAKE_CURRENT_LIST_DIR})
