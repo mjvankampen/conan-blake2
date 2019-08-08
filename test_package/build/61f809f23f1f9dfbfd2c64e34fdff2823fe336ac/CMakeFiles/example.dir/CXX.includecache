@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Soft_Dev/conan-blake2/test_package/example.cpp
+iostream
+-
+string
+-
+sstream
+-
+iomanip
+-
+blake2/blake2.h
+C:/Soft_Dev/conan-blake2/test_package/blake2/blake2.h
+
+C:/Users/mjvk/.conan/data/blake2/20190808/_/_/package/b11fd4ca09432e3de12bfe5b75099b010771c90f/include/blake2/blake2.h
+stddef.h
+-
+stdint.h
+-
+
