@@ -17,7 +17,7 @@ class Blake2Conan(ConanFile):
     def source(self):
         git = tools.Git(folder="blake2")
         git.clone("https://github.com/mjvk/BLAKE2.git","cmake")
-        git.checkout("1d4fc531127cf46facbc5b7e3c66641a82f20855")
+        git.checkout("6791c8c717afdcfbbb48242cdc2399c259abfc95")
     
     def configure(self):
         if self.settings.compiler == "Visual Studio":
