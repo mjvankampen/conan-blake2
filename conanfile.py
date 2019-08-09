@@ -9,15 +9,17 @@ class Blake2Conan(ConanFile):
     url = "<Package recipe repository url here, for issues about the package>"
     description = "<Description of Blake2 here>"
     topics = ("<Put some tag here>", "<here>", "<and here>")
-    settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=False"
+    settings = "os", "compiler", "arch"
+    options = {"shared": [True, False],
+               "enable_xop": [True, False],
+               "isa_extension": ["Best", "SSE2", "SSSE3", "SSE4.1", "AVX", "AVX2", "Neon", "None"]}
+    default_options = {"shared": "False", "enable_xop": "False", "isa_extension": "Best"}
     generators = "cmake"
 
     def source(self):
         git = tools.Git(folder="blake2")
         git.clone("https://github.com/mjvk/BLAKE2.git","cmake")
-        git.checkout("6791c8c717afdcfbbb48242cdc2399c259abfc95")
+        git.checkout("8c4d6b9efb55fa8731fab851aec7ff160a3eb5b9")
     
     def configure(self):
         if self.settings.compiler == "Visual Studio":
@@ -25,17 +27,14 @@ class Blake2Conan(ConanFile):
             
     def _configure_cmake(self):
         cmake = CMake(self)
+        cmake.definitions["ISA_EXTENSION"] = self.options.isa_extension
+        cmake.definitions["XOP_ENABLED"] = self.options.enable_xop
         cmake.configure(source_folder="blake2")
         return cmake
         
     def build(self):
         cmake = self._configure_cmake()
         cmake.build()
-
-        # Explicit way:
-        # self.run('cmake %s/hello %s'
-        #          % (self.source_folder, cmake.command_line))
-        # self.run("cmake --build . %s" % cmake.build_config)
 
     def package(self):
         cmake = self._configure_cmake()
