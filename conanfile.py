@@ -4,11 +4,12 @@ from conans import ConanFile, CMake, tools
 class Blake2Conan(ConanFile):
     name = "blake2"
     version = "20190809"
-    license = "<Put the package license here>"
-    author = "<Put your name here> <And your email here>"
-    url = "<Package recipe repository url here, for issues about the package>"
-    description = "<Description of Blake2 here>"
-    topics = ("<Put some tag here>", "<here>", "<and here>")
+    license = "MIT"
+    author = "mjvk"
+    url = "https://github.com/mjvk/conan-blake2"
+    homepage = "https://blake2.net"
+    description = "Libraries and executables to generate a blake2 hash"
+    topics = ("blake2", "hashing", "<and here>")
     settings = "os", "compiler", "arch"
     options = {"shared": [True, False],
                "enable_xop": [True, False],
