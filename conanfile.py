@@ -12,24 +12,26 @@ class Blake2Conan(ConanFile):
     topics = ("blake2", "hashing", "<and here>")
     settings = "os", "compiler", "arch"
     options = {"shared": [True, False],
+                "build_b2sum": [True, False],
                "enable_xop": [True, False],
                "isa_extension": ["Best", "SSE2", "SSSE3", "SSE4.1", "AVX", "AVX2", "Neon", "None"]}
-    default_options = {"shared": "False", "enable_xop": "False", "isa_extension": "Best"}
+    default_options = {"shared": "False", "enable_xop": "False", "isa_extension": "Best", "build_b2sum": "False"}
     generators = "cmake"
 
     def source(self):
         git = tools.Git(folder="blake2")
         git.clone("https://github.com/mjvk/BLAKE2.git","cmake")
-        git.checkout("f4e698cd662d8107f39790a8db199464e0b22fc8")
+        git.checkout("20b60407c09beba1a47f109d1d79781b3bbc0288")
     
     def configure(self):
-        if self.settings.compiler == "Visual Studio":
+        if self.settings.compiler == "Visual Studio" and self.options.build_b2sum == True:
             raise Exception("Visual studio is not supported as a compiler as it misses some POSIX features, try mingw on windows!")
             
     def _configure_cmake(self):
         cmake = CMake(self)
         cmake.definitions["ISA_EXTENSION"] = self.options.isa_extension
         cmake.definitions["XOP_ENABLED"] = self.options.enable_xop
+        cmake.definitions["BUILD_B2SUM"] = self.options.build_b2sum
         cmake.configure(source_folder="blake2")
         return cmake
         

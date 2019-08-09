@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(PackageTest C CXX)
 
+set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
+
 include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
