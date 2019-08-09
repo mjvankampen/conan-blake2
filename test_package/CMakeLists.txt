@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.12)
 project(PackageTest C CXX)
 
 include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
 find_library(LIBBLAKE2B blake2b)
 find_path(LIBBLAKE2_INCLUDE_DIR blake2/blake2.h)
