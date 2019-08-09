@@ -18,3 +18,5 @@ include_directories(${LIBBLAKE2_INCLUDE_DIR})
 add_executable(example example.cpp)
 target_link_libraries(example ${LIBBLAKE2B})
 
+install(TARGETS example RUNTIME DESTINATION bin ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
+
