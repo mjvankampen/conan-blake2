@@ -11,6 +11,7 @@ class Blake2TestConan(ConanFile):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
+        cmake.install()
         
     def imports(self):
         self.copy("*.dll", dst="bin", src="bin")
