@@ -6,6 +6,14 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
 include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
+if (APPLE)
+    set(CMAKE_INSTALL_RPATH "@executable_path/../lib")
+else()
+    set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib")
+endif()
+
+set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
+
 find_library(LIBBLAKE2B blake2b)
 find_path(LIBBLAKE2_INCLUDE_DIR blake2/blake2.h)
 
