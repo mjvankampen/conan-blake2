@@ -7,9 +7,9 @@ include(${CMAKE_BINARY_DIR}/conan_paths.cmake)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 
 if (APPLE)
-    set(CMAKE_INSTALL_RPATH "@executable_path/../lib")
+    set(CMAKE_INSTALL_RPATH "@executable_path/")
 else()
-    set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib")
+    set(CMAKE_INSTALL_RPATH "$ORIGIN/")
 endif()
 
 set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
