@@ -3,7 +3,7 @@ from conans import ConanFile, CMake, tools
 
 class Blake2Conan(ConanFile):
     name = "blake2"
-    version = "20190809"
+    version = "20190817"
     license = "MIT"
     author = "mjvk"
     url = "https://github.com/mjvk/conan-blake2"
@@ -21,7 +21,7 @@ class Blake2Conan(ConanFile):
     def source(self):
         git = tools.Git(folder="blake2")
         git.clone("https://github.com/mjvk/BLAKE2.git","cmake")
-        git.checkout("20b60407c09beba1a47f109d1d79781b3bbc0288")
+        git.checkout("75c870d4ca377a8c34a7e89599f19c4c12f51053")
     
     def configure(self):
         if self.settings.compiler == "Visual Studio" and self.options.build_b2sum == True:
