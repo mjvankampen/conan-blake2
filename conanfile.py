@@ -44,5 +44,5 @@ class Blake2Conan(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.libs = ["blake2"]
+        self.cpp_info.libs = ["blake2b", "blake2bp", "blake2s", "blake2sp", "blake2xb", "blake2xs"]
 
