@@ -1,9 +1,10 @@
 from conans import ConanFile, CMake, tools
+import os
 
 
 class Blake2Conan(ConanFile):
     name = "blake2"
-    version = "20200103"
+    version = "20200315"
     license = "MIT"
     author = "mjvk"
     url = "https://github.com/mjvk/conan-blake2"
@@ -21,11 +22,7 @@ class Blake2Conan(ConanFile):
     def source(self):
         git = tools.Git(folder="blake2")
         git.clone("https://github.com/mjvk/BLAKE2.git","cmake")
-        git.checkout("77797d9a1cb01347dee3ba219c893f5bf592a6ab")
-    
-    def configure(self):
-        if self.settings.compiler == "Visual Studio" and self.options.build_b2sum == True:
-            raise Exception("Visual studio is not supported as a compiler as it misses some POSIX features, try mingw on windows!")
+        git.checkout("b4809c7454de692e803af74c62c66d67b0999113")
             
     def _configure_cmake(self):
         cmake = CMake(self)
@@ -45,4 +42,6 @@ class Blake2Conan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["blake2b", "blake2bp", "blake2s", "blake2sp", "blake2xb", "blake2xs"]
+        if self.options.build_b2sum:
+            self.env_info.PATH.append(os.path.join(self.package_folder, "bin"))
 
